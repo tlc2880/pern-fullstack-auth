@@ -1,11 +1,10 @@
 import React from 'react';
-import Layout from '../components/Layout';
 
 function Register() {
   return (
-    <Layout>
-      <h1>Register</h1>
-    </Layout>
+    <div>
+      <h1>Dashboard</h1>
+    </div>
   );
 }
 
