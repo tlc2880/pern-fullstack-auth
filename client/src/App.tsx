@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   BrowserRouter,
+  Navigate,
   Routes,
   Route,
-  Outlet,
-  Navigate
+  Outlet
 } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
@@ -13,7 +13,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 
 const PrivateRoutes = () => {
-  const isAuth = true;
+  const isAuth = false;
   return <>{isAuth ? <Outlet /> : <Navigate to='/login' />}</>
 }
 
