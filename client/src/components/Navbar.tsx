@@ -1,7 +1,8 @@
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
-    const isAuth = true;
+    const isAuth = false;
 
     return (
         <nav className='navbar brand-light bg-light'>
@@ -19,10 +20,10 @@ const Navbar = () => {
                 </div>
             ) : (
                 <div>
-                    <NavLink to='/login' className='navbar-brand mb-0 h1'>
+                    <NavLink to='/login' className='mx-3'>
                         <span>Login</span>
                     </NavLink>
-                    <NavLink to='/register' className='navbar-brand mb-0 h1'>
+                    <NavLink to='/register' className='mx-3'>
                         <span>Register</span>
                     </NavLink>
                 </div>
