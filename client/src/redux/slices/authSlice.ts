@@ -13,7 +13,6 @@ const initialState = {
     isAuth: userAuthFromLocalStorage(),
 }
 
-
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
