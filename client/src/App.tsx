@@ -4,7 +4,7 @@ import {
   Navigate,
   Routes,
   Route,
-  Outlet
+  Outlet,
 } from 'react-router-dom'
 
 import Dashboard from './pages/Dashboard'
