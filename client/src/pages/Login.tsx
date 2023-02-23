@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout'
 import { onLogin } from '../api/auth'
+import Layout from '../components/Layout'
 import { useDispatch } from 'react-redux'
 import { authenticateUser } from '../redux/slices/authSlice'
 
@@ -20,6 +20,7 @@ function Login() {
     e.preventDefault()
 
     try {
+      // eslint-disable-next-line
       await onLogin(values)
       dispatch(authenticateUser())
       localStorage.setItem('isAuth', 'true')
