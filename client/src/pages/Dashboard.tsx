@@ -33,7 +33,7 @@ function Dashboard() {
 
   useEffect(() => {
     protectedInfo()
-  }, [])
+  })
 
   return loading ? (
     <Layout>
