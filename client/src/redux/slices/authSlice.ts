@@ -5,7 +5,6 @@ const userAuthFromLocalStorage = () => {
     if (isAuth && JSON.parse(isAuth) === true) {
         return true
     }
-
     return false
 }
 

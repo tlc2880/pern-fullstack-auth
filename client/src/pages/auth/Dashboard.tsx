@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { fetchProtectedInfo, onLogout } from '../api/auth'
-import Layout from '../components/Layout'
-import { useDispatch } from 'react-redux'
-import { unauthenticateUser } from '../redux/slices/authSlice'
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { unauthenticateUser } from '../../redux/slices/authSlice'
+import { fetchProtectedInfo, onLogout } from '../../api/auth';
+import Layout from '../../components/Layout';
 
 function Dashboard() {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [protectedData, protectedDataSet] = useState(null);
-
 
   const logout = async () => {
     try {
@@ -33,7 +32,7 @@ function Dashboard() {
 
   useEffect(() => {
     protectedInfo()
-  })
+  },)
 
   return loading ? (
     <Layout>
