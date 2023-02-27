@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { onRegistration } from '../api/auth'
-import Layout from '../components/Layout'
+import { onRegistration } from '../../api/auth'
+import Layout from '../../components/Layout'
 
 function Register() {
   const [values, setValues] = useState({

@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -6,12 +5,11 @@ import {
   Route,
   Outlet,
 } from 'react-router-dom'
-
-import Dashboard from './pages/Dashboard'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
 import { useSelector } from 'react-redux'
+import Register from './pages/auth/Register'
+import Home from './pages/auth/Home'
+import Login from './pages/auth/Login'
+import Dashboard from './pages/auth/Dashboard'
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state: any) => state.auth)
