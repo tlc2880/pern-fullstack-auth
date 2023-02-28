@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { unauthenticateUser } from '../../redux/slices/authSlice'
 import { fetchProtectedInfo, onLogout } from '../../api/auth';
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import InputTodo from "../todo/InputTodo";
+import ListTodos  from "../todo/ListTodos";
 import Layout from '../../components/Layout';
 
 function Dashboard() {
@@ -46,6 +50,12 @@ function Dashboard() {
         <button onClick={() => logout()} className="btn btn-primary">
           Logout
         </button>
+        <CssBaseline />
+        <Container maxWidth="md">
+          <h1 className="input-header" >PERN Todo using Redux Toolkit with Authorization</h1>
+          < InputTodo />
+          < ListTodos />  
+        </Container>
       </Layout>
     </div>
   )

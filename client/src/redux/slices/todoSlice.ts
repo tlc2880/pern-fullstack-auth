@@ -22,6 +22,18 @@ export const getTodos: any = createAsyncThunk("todos/getTodos", async () => {
   }
 });
 
+export const createTodo: any = createAsyncThunk(
+  "todos/createTodo",
+  async (todo: todoType, { rejectWithValue }) => {
+    try {
+      const response = await axios.post( `${baseURL}/todos`, todo );
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const todoSlice = createSlice({
   name: "todos",
   initialState,
@@ -46,7 +58,28 @@ const todoSlice = createSlice({
         responseStatus: "rejected",
         responseMessage: action.payload,
       };
+      },
+    [createTodo.pending]: (state, action) => {
+      return {
+        ...state,
+        responseStatus: "pending",
+      };
     },
+    [createTodo.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        todos: [...state.todos, action.payload],
+        responseStatus: "success",
+        responseMessage: "Todo created successfully",
+      };
+    },
+    [createTodo.rejected]: (state, action) => {
+      return {
+        ...state,
+        responseStatus: "rejected",
+        responseMessage: action.payload,
+      };
+    }
   },
 });
 
