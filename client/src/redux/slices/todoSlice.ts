@@ -34,6 +34,30 @@ export const createTodo: any = createAsyncThunk(
   }
 );
 
+export const updateTodo: any = createAsyncThunk(
+  "todos/updateTodo",
+  async (todo: todoType, { rejectWithValue }) => {
+    try {
+      const response = await axios.put( `${baseURL}/todos/${todo.todo_id}`, todo );
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const deleteTodo: any = createAsyncThunk(
+  "todos/deleteTodo",
+  async (todoId: string, { rejectWithValue }) => {
+    try {
+      await axios.delete(`${baseURL}/todos/${todoId}`);
+      return todoId;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const todoSlice = createSlice({
   name: "todos",
   initialState,
@@ -79,7 +103,45 @@ const todoSlice = createSlice({
         responseStatus: "rejected",
         responseMessage: action.payload,
       };
-    }
+    },
+    [updateTodo.pending]: (state, action) => {
+      return {
+        ...state,
+        responseStatus: "pending",
+      };
+    },
+    [updateTodo.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        todos: state.todos.map((todo: todoType) =>
+          todo.todo_id === action.payload.todo_id ? action.payload : todo
+        ),
+        responseStatus: "success",
+        responseMessage: "Todo updated successfully",
+      };
+    },
+    [updateTodo.rejected]: (state, action) => {
+      return {
+        ...state,
+        responseStatus: "rejected",
+        responseMessage: action.payload,
+      };
+    },
+    [deleteTodo.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        todos: state.todos.filter((todo: todoType) => todo.todo_id !== action.payload),
+        responseStatus: "success",
+        responseMessage: "Todo deleted successfully",
+      };
+    },
+    [deleteTodo.rejected]: (state, action) => {
+      return {
+        ...state,
+        responseStatus: "rejected",
+        responseMessage: action.payload,
+      };
+    },
   },
 });
 

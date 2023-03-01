@@ -45,14 +45,14 @@ function Dashboard() {
   ) : (
     <div>
       <Layout>
-        <h1>Dashboard</h1>
-        <h2>{protectedData}</h2>
+        <h2>Dashboard</h2>
+        <h3>{protectedData}</h3>
         <button onClick={() => logout()} className="btn btn-primary">
           Logout
         </button>
         <CssBaseline />
         <Container maxWidth="md">
-          <h1 className="input-header" >PERN Todo using Redux Toolkit with Authorization</h1>
+          <h2 className="input-header" >PERN Todo using Redux Toolkit with Authorization</h2>
           < InputTodo />
           < ListTodos />  
         </Container>
