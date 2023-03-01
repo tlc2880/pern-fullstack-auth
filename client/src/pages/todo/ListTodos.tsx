@@ -1,7 +1,7 @@
 import React, { useEffect  } from "react";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { getTodos } from "../../redux/slices/todoSlice";
-//import EditTodo from "./EditTodo";
+import { getTodos, updateTodo, deleteTodo } from "../../redux/slices/todoSlice";
+import EditTodo from "./EditTodo";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -21,16 +21,16 @@ const ListTodos = () => {
     dispatch(getTodos());
   }, [dispatch]);
   
-  // const handleDelete = (id: string) => {
-  //   dispatch(deleteTodo(id));
-  // };
+  const handleDelete = (id: string) => {
+    dispatch(deleteTodo(id));
+  };
   
-  // const completeTodo = (todo: todoType) => {
-  //   const newTodo = {...todo}
-  //   newTodo.completed = true;
-  //   dispatch(updateTodo(newTodo));
-  //   window.location.reload();
-  // }
+  const completeTodo = (todo: todoType) => {
+    const newTodo = {...todo}
+    newTodo.completed = true;
+    dispatch(updateTodo(newTodo));
+    window.location.reload();
+  }
 
   return (
     <>
@@ -74,7 +74,7 @@ const ListTodos = () => {
                     {todo.afternoon? 'Afternoon, ': ''} 
                     {todo.evening? 'Evening': ''}
                   </TableCell>
-                  {/* <TableCell>
+                  <TableCell>
                     < EditTodo todo={todo} />
                   </TableCell>
                   <TableCell>
@@ -95,7 +95,7 @@ const ListTodos = () => {
                     >
                       <DoneIcon />
                     </IconButton>
-                  </TableCell> */}
+                  </TableCell> 
                 </TableRow>
               );
             })}
