@@ -7,20 +7,23 @@ const cors = require('cors');
 
 // import passport middleware
 require('./middlewares/passport-middleware')
-
+ 
 // initialize middlewares
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({ origin: CLIENT_URL, credentials: true}))
 app.use(passport.initialize())
+app.use(express.static("public"));
 
 // import routes
-const authRoutes = require('./routes/auth.router');
-const todosRoutes = require("./routes/todos.routes");
+const authRoute = require('./routes/auth.route');
+const todosRoute = require("./routes/todos.route");
+const eComRoute = require("./routes/eCom.route")
 
 // initialize routes
-app.use('/', authRoutes);
-app.use("/", todosRoutes);
+app.use('/', authRoute);
+app.use("/", todosRoute);
+app.use("/", eComRoute);
 
 const appStart = () => {
     try {
@@ -32,4 +35,4 @@ const appStart = () => {
     }
 }
 
-appStart()
+appStart();
