@@ -1,5 +1,6 @@
 Authentication using JWT
 PostgreSQL Express React Node (PERN) full-stack app, integrates React frontend with Node.js backend.
+There is also a full CRUD of a todos table using Material UI as well as an eCommerce shopping cart with Stripe payment.
 
 💾 Setup - Backend
 Change to /server directory
