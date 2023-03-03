@@ -10,6 +10,8 @@ import Register from './pages/auth/Register'
 import Home from './pages/auth/Home'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/auth/Dashboard'
+import Cancel from './pages/eCom/Cancel'
+import Success from './pages/eCom/Success'
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state: any) => state.auth)
@@ -33,6 +35,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
         </Route>
+        <Route path='/cancel' element={<Cancel />} />
+        <Route path='/success' element={<Success />} />
       </Routes>
     </BrowserRouter>
   );
