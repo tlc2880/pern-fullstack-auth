@@ -16,7 +16,7 @@ const productsArray = [
     },
     {
         id: '4',
-        title: "Pencil",
+        title: "Pencils",
         price: .99
     }
 ];

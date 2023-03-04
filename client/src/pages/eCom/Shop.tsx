@@ -2,7 +2,6 @@ import {Row, Col} from 'react-bootstrap';
 import { productsArray } from './productsStore';
 import ProductCard from './ProductCard';
 function Shop() {
-
     return (
         <>
             <h1 className="p-3">Welcome to the Store!</h1>
