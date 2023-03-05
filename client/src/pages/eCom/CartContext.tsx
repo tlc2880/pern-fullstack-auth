@@ -1,19 +1,28 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 import { getProductData } from "./productsStore";
 
 export const CartContext = createContext({
     items: [],
-    getProductQuantity: (id) => {},
-    addOneToCart: (id) => {},
-    removeOneFromCart: (id) => {},
-    deleteFromCart: (id) => {},
+    getProductQuantity: (id: string) => {},
+    addOneToCart: (id: string) => {},
+    removeOneFromCart: (id: string) => {},
+    deleteFromCart: (id: string) => {},
     getTotalCost: () => {}
 });
 
-export function CartProvider({children}) {
-    const [cartProducts, setCartProducts] = useState([]); 
+type CartProviderProps = {
+    children: ReactNode
+}
+
+type quantityType = {
+    id: string;
+    quantity: number;
+}
+
+export function CartProvider({ children }: CartProviderProps) {
+    const [cartProducts, setCartProducts] = useState<quantityType[]>([]); 
     // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]
-    function getProductQuantity(id) {
+    function getProductQuantity(id: string) {
         const quantity = cartProducts.find(product => product.id === id)?.quantity;
         if (quantity === undefined) {
             return 0;
@@ -21,7 +30,7 @@ export function CartProvider({children}) {
         return quantity;
     }
 
-    function addOneToCart(id) {
+    function addOneToCart(id: string) {
         const quantity = getProductQuantity(id);
         if (quantity === 0) { // product is not in cart
             setCartProducts(
@@ -45,7 +54,7 @@ export function CartProvider({children}) {
         }
     }
 
-    function removeOneFromCart(id) {
+    function removeOneFromCart(id: string) {
         const quantity = getProductQuantity(id);
         if(quantity === 1) {
             deleteFromCart(id);
@@ -61,7 +70,7 @@ export function CartProvider({children}) {
         }
     }
 
-    function deleteFromCart(id) {
+    function deleteFromCart(id: string) {
         // [] if an object meets a condition, add the object to array
         // [product1, product2, product3]
         // [product1, product3]
@@ -77,7 +86,12 @@ export function CartProvider({children}) {
         let totalCost = 0;
         cartProducts.forEach(item => {
             const productData = getProductData(item.id);
-            totalCost += (productData.price * item.quantity);
+            if (productData !== undefined) {
+                totalCost += (productData.price * item.quantity);
+            }
+            else {
+                totalCost = 0;
+            }
         })
         return totalCost;
     }
@@ -92,6 +106,7 @@ export function CartProvider({children}) {
     }
 
     return (
+        // @ts-expect-error
         <CartContext.Provider value={contextValue}>
             {children}
         </CartContext.Provider>
