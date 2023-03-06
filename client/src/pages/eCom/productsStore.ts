@@ -1,7 +1,3 @@
-// Coffee: price_1MgHsyFeZ9mAE5amZIVcJdA0
-// Sunglasses: price_1MgHvmFeZ9mAE5amJw1Yk1PY
-// Camera: price_1MgHxAFeZ9mAE5amAUh6VP2r
-
 const productsArray = [
     {
         id: "price_1MgHsyFeZ9mAE5amZIVcJdA0",

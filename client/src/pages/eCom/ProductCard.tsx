@@ -22,7 +22,7 @@ const ProductCard = ( props: ProductCardProps ) => {
                         <Form>
                             <Form.Group as={Row}>
                             {/* @ts-expect-error */}
-                            <Form.Label column sm="6">
+                            <Form.Label column sm="5">
                                 In Cart: {productQuantity}
                             </Form.Label>
                             <Col sm="6">
