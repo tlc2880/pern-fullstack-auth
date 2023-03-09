@@ -18,13 +18,11 @@ app.use(express.static("public"));
 // import routes
 const authRoute = require('./routes/auth.route');
 const todosRoute = require("./routes/todos.route");
-const eComRoute = require("./routes/eCom.route");
 const shopRoute = require("./routes/shop.route");
 
 // initialize routes
 app.use('/', authRoute);
 app.use("/", todosRoute);
-app.use("/", eComRoute);
 app.use("/", shopRoute);
 
 const appStart = () => {

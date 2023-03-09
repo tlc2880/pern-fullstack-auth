@@ -11,7 +11,7 @@ function NavbarComponent() {
     const handleShow = () => setShow(true);
 
     const checkout = async () => {
-        await fetch('http://localhost:5000/checkout', {
+        await fetch('http://localhost:5000/shop/checkout', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
