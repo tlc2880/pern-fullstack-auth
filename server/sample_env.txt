@@ -1,0 +1,10 @@
+DB_HOST="localhost"
+DB_USER="postgres"
+DB_PASSWORD="123456"
+DB_NAME="pern_todo"
+DB_PORT= 5432
+SERVER_URL="http://localhost:5000"
+CLIENT_URL="http://localhost:3000"
+PORT= 5000
+SECRET="Hello there"
+STRIPE="sk_test_LTQPhkCZjMU3La6mWPYzmJ6L00qXdcCpaO"
