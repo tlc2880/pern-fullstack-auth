@@ -38,7 +38,7 @@ import {
     console.log (newItem);
     return (
       <>
-        <Button onClick={() => setOpen(true)}>Open dialog</Button>
+        <Button onClick={() => setOpen(true)}>Edit</Button>
         <Dialog
           open={open}
           onClose={() => setOpen(false)}
