@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import { ProductUpdate } from '../eCom/ProductUpdate';
+import { ItemUpdate } from '../shop/ItemUpdate';
 const itemInit = {
   id: "price_5555555",
   title: "Blue Pens",
@@ -9,10 +9,13 @@ const itemInit = {
 
 function Home() {
   return (
+    <Layout>
       <>
-        < ProductUpdate item={itemInit} />
+        <h1>Home page</h1>
+        < ItemUpdate item={itemInit} />
       </>
-     );
+    </Layout>
+  );
 }
 
 export default Home;

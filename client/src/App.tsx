@@ -10,8 +10,8 @@ import Register from './pages/auth/Register'
 import Home from './pages/auth/Home'
 import Login from './pages/auth/Login'
 import Dashboard from './pages/auth/Dashboard'
-import Cancel from './pages/eCom/Cancel'
-import Success from './pages/eCom/Success'
+import Cancel from './pages/shop/Cancel'
+import Success from './pages/shop/Success'
 import Shop from './pages/auth/Shop'
 
 const PrivateRoutes = () => {

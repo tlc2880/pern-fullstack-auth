@@ -1,9 +1,9 @@
 import Layout from '../../components/Layout';
 import {Row, Col, Container} from 'react-bootstrap';
-import useProducts from "../eCom/useProducts";
-import ProductCard from '../eCom/ProductCard';
-import NavbarComponent from '../eCom/EComNav';
-import CartProvider from '../eCom/CartContext';
+import useProducts from "../shop/useProducts";
+import ProductCard from '../shop/ProductCard';
+import NavbarComponent from '../shop/EComNav';
+import CartProvider from '../shop/CartContext';
 
 function Shop() {
     const { productsArray } = useProducts();

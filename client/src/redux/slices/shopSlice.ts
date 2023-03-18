@@ -19,6 +19,18 @@ export const getItems: any = createAsyncThunk("shop/getItems", async () => {
   }
 });
 
+export const updateItem: any = createAsyncThunk(
+  "shop/updateItem",
+  async (item: itemType, { rejectWithValue }) => {
+    try {
+      const response = await axios.put( `${baseURL}/shop/${item.id_shop}`, item );
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const shopSlice = createSlice({
     name: "shop",
     initialState,
@@ -38,6 +50,29 @@ const shopSlice = createSlice({
         };
       },
       [getItems.rejected]: (state, action) => {
+        return {
+          ...state,
+          responseStatus: "rejected",
+          responseMessage: action.payload,
+        };
+      },
+      [updateItem.pending]: (state, action) => {
+        return {
+          ...state,
+          responseStatus: "pending",
+        };
+      },
+      [updateItem.fulfilled]: (state, action) => {
+        return {
+          ...state,
+          items: state.items.map((item: itemType) =>
+            item.id_shop === action.payload.id_shop ? action.payload : item
+          ),
+          responseStatus: "success",
+          responseMessage: "Item updated successfully",
+        };
+      },
+      [updateItem.rejected]: (state, action) => {
         return {
           ...state,
           responseStatus: "rejected",
