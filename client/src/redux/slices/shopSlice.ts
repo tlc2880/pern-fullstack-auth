@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import itemType from "../../item.Type";
 
 const baseURL = "http://localhost:5000";
 
@@ -42,7 +43,7 @@ const shopSlice = createSlice({
           responseStatus: "rejected",
           responseMessage: action.payload,
         };
-    }
+      }
   },
 });
 
