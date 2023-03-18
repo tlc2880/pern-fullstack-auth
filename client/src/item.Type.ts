@@ -1,6 +1,6 @@
-export default interface ItemType {
+export default interface itemType {
     id: string,
     title: string,
     price: number,
-    id_shop: string
+    id_shop: number
 }

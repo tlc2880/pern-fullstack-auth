@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import { CartContext } from "./CartContext";
 import { useContext } from "react";
-import { getProductData } from "./productsStore";
+import useProducts from "./useProducts";
 
 type CartProductProps = {
     id: string;
@@ -9,6 +9,7 @@ type CartProductProps = {
 }
 
 function CartProduct(props: CartProductProps) {
+    const { getProductData } = useProducts();
     const cart = useContext(CartContext);
     const id = props.id;
     const quantity = props.quantity;
