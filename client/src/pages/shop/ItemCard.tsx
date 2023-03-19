@@ -1,4 +1,4 @@
-import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch } from "../../redux/hooks";
 import { deleteItem } from "../../redux/slices/shopSlice";
 import { CartContext } from './CartContext';
 import { useContext } from 'react';
@@ -17,7 +17,6 @@ type ItemCardProps = {
   }
 
 const ItemCard = ( props: ItemCardProps ) => {
-    const shop = useAppSelector((state) => state.shop);
     const dispatch = useAppDispatch();
 
     const { productsArray } = useProducts();
