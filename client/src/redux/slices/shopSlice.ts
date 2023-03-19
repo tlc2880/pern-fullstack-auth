@@ -31,6 +31,17 @@ export const updateItem: any = createAsyncThunk(
   }
 );
 
+export const deleteItem: any = createAsyncThunk(
+  "shop/deleteTodo",
+  async (itemId: string, { rejectWithValue }) => {
+    try {
+      await axios.delete(`${baseURL}/shop/${itemId}`);
+      return itemId;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
 const shopSlice = createSlice({
     name: "shop",
     initialState,
@@ -78,7 +89,22 @@ const shopSlice = createSlice({
           responseStatus: "rejected",
           responseMessage: action.payload,
         };
-      }
+      },
+      [deleteItem.fulfilled]: (state, action) => {
+        return {
+          ...state,
+          items: state.items.filter((item: itemType) => item.id_shop !== action.payload),
+          responseStatus: "success",
+          responseMessage: "Item deleted successfully",
+        };
+      },
+      [deleteItem.rejected]: (state, action) => {
+        return {
+          ...state,
+          responseStatus: "rejected",
+          responseMessage: action.payload,
+        };
+      },
   },
 });
 
