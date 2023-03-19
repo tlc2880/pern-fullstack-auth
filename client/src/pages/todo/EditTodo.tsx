@@ -222,7 +222,17 @@ const EditTodo = ( {todo}: EditTodoProps ) => {
 
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => handleEdit(todo)}>Save</Button>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            type="submit" 
+            onClick={() => handleEdit(todo)}
+            style={{
+              backgroundColor: "green",
+              margin: "3px"
+            }}>
+              Save
+          </Button>
         </DialogActions>
       </Dialog>
     </>
