@@ -1,13 +1,15 @@
+import { useContext } from 'react';
 import { useAppDispatch } from "../../redux/hooks";
 import { deleteItem } from "../../redux/slices/shopSlice";
 import { CartContext } from './CartContext';
-import { useContext } from 'react';
 import { ItemUpdate } from './ItemUpdate';
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
+import {
+    IconButton,
+    Typography,
+    CardContent,
+    CardActions,
+    Card,
+} from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import useProducts from "./useProducts";
 import itemType from '../../item.Type'
@@ -18,7 +20,6 @@ type ItemCardProps = {
 
 const ItemCard = ( props: ItemCardProps ) => {
     const dispatch = useAppDispatch();
-
     const { productsArray } = useProducts();
     const product = props.product;
     const cart = useContext(CartContext);
