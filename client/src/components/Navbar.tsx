@@ -17,8 +17,8 @@ const Navbar = () => {
                     <NavLink to='/dashboard'>
                         <span className='navbar-brand mb-0 h1'>Dashboard</span>
                     </NavLink>
-                    <NavLink to='/shop'>
-                        <span className='navbar-brand mb-0 h1'>Shop</span>
+                    <NavLink to='/shop-admin'>
+                        <span className='navbar-brand mb-0 h1'>Shop Admin</span>
                     </NavLink>
                 </div>
             ) : (

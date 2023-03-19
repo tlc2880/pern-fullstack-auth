@@ -1,17 +1,17 @@
 import { updateItem } from "../../redux/slices/shopSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
-import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  Box,
-  FormControl
-} from '@mui/material'
+    Button,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    TextField,
+    Box,
+    FormControl,
+    IconButton
+  } from '@mui/material'
 import { useState } from 'react'
 import itemType from '../../item.Type'
 
@@ -21,11 +21,11 @@ type ItemUpdateProps = {
 
 export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
   const [newItem, setNewItem] = useState<itemType>({
-    id: item.id,
-    title: item.title,
-    price: item.price,
-    id_shop: item.id_shop
-  });
+      id: item.id,
+      title: item.title,
+      price: item.price,
+      id_shop: item.id_shop
+    });
   const [open, setOpen] = useState(false)
   const [id, setId] = useState(item.id);
   const [title, setTitle] = useState(item.title);
@@ -64,8 +64,8 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
               variant="outlined"
               value={title}
               onChange={(event) => {
-              setTitle(event.target.value); 
-              setNewItem({...newItem, 'title': event.target.value});
+                setTitle(event.target.value); 
+                setNewItem({...newItem, 'title': event.target.value});
               }}
             />
             <TextField
@@ -76,8 +76,8 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
               variant="outlined"
               value={price}
               onChange={(event) => {
-              setPrice(Number(event.target.value));
-              setNewItem({...newItem, 'price': Number(event.target.value)});
+                setPrice(Number(event.target.value));
+                setNewItem({...newItem, 'price': Number(event.target.value)});
               }}
             />
             <TextField
@@ -88,8 +88,8 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
               variant="outlined"
               value={id}
               onChange={(event) => {
-              setId(event.target.value); 
-              setNewItem({...newItem, 'id': event.target.value});
+                setId(event.target.value); 
+                setNewItem({...newItem, 'id': event.target.value});
               }}
             />
             </FormControl>
@@ -124,4 +124,3 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
     </>
   )
 }
-  

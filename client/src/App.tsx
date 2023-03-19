@@ -12,7 +12,7 @@ import Login from './pages/auth/Login'
 import Dashboard from './pages/auth/Dashboard'
 import Cancel from './pages/shop/Cancel'
 import Success from './pages/shop/Success'
-import Shop from './pages/auth/Shop'
+import ShopAdmin from './pages/auth/ShopAdmin'
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state: any) => state.auth)
@@ -31,7 +31,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/shop' element={<Shop />} />
+          <Route path='/shop-admin' element={<ShopAdmin />} />
         </Route>
         <Route element={<RestrictedRoutes />}>
           <Route path='/register' element={<Register />} />

@@ -56,7 +56,7 @@ const ItemCreate = () => {
         <Dialog
           open={open}
           onClose={() => setOpen(false)}
-          >
+        >
             <form onSubmit={onSubmitForm}>
                 <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
                 <DialogContent>
