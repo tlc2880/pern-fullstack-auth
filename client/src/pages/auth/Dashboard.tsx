@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { unauthenticateUser } from '../../redux/slices/authSlice'
 import { fetchProtectedInfo, onLogout } from '../../api/auth';
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
+import { CssBaseline, Container, Button } from "@mui/material";
 import InputTodo from "../todo/InputTodo";
 import ListTodos  from "../todo/ListTodos";
 import Layout from '../../components/Layout';
@@ -25,7 +24,6 @@ function Dashboard() {
 
   const protectedInfo = async () => {
     try {
-      // eslint-disable-next-line
       const { data } = await fetchProtectedInfo()
       protectedDataSet(data.info)
       setLoading(false)
@@ -47,14 +45,22 @@ function Dashboard() {
       <Layout>
         <h2>Dashboard</h2>
         <h3>{protectedData}</h3>
-        <button onClick={() => logout()} className="btn btn-primary">
+        <Button 
+          variant="contained" 
+          color="primary" 
+          onClick={() => logout()}
+          style = {{
+            backgroundColor: "blue",
+            margin: "5px"
+          }}
+        >
           Logout
-        </button>
+        </Button>
         <CssBaseline />
         <Container maxWidth="md">
           <h2 className="input-header" >PERN Todo using Redux Toolkit with Authorization</h2>
-          < InputTodo />
-          < ListTodos />  
+          <InputTodo />
+          <ListTodos />  
         </Container>
       </Layout>
     </div>
