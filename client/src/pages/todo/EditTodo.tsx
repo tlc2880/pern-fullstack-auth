@@ -230,8 +230,9 @@ const EditTodo = ( {todo}: EditTodoProps ) => {
             style={{
               backgroundColor: "green",
               margin: "3px"
-            }}>
-              Save
+            }}
+          >
+            Save
           </Button>
         </DialogActions>
       </Dialog>

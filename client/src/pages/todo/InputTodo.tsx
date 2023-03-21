@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { createTodo } from "../../redux/slices/todoSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import {
-  FormControl,
   FormLabel,
   RadioGroup,
   Radio,
@@ -14,7 +13,6 @@ import {
   Checkbox,
   Button,
   Box,
-  Grid,
   InputLabel,
   Dialog,
   DialogTitle,
@@ -87,11 +85,11 @@ const InputTodo = () => {
         color="primary" 
         onClick={() => setOpen(true)}
         style = {{
-            backgroundColor: "green",
-            margin: "5px"
+          backgroundColor: "green",
+          margin: "5px"
         }}
       >
-        New Item
+        New Todo
       </Button>
       <Dialog
         open={open}
@@ -100,7 +98,6 @@ const InputTodo = () => {
       <form onSubmit={onSubmitForm}>
         <DialogTitle id='dialog-title'>Create New Todo</DialogTitle>
         <DialogContent>
-        {/* <Grid container alignItems="center" direction="column" > */}
           <Box
             sx={{
               "& .MuiTextField-root": { m: 1, width: "40ch" }
@@ -108,21 +105,21 @@ const InputTodo = () => {
           >
           <FormGroup>
             <TextField
-              id="description"
-              name="description"
-              label="Enter description"
-              type="text"
-              value={formValues.description}
-              onChange={handleInputChange}
-            />
-            <TextField
-              id="owner"
-              name="owner"
-              label="Enter owner"
-              type="text"
-              value={formValues.owner}
-              onChange={handleInputChange}
-            /> 
+            id="description"
+            name="description"
+            label="Enter description"
+            type="text"
+            value={formValues.description}
+            onChange={handleInputChange}
+          />
+          <TextField
+            id="owner"
+            name="owner"
+            label="Enter owner"
+            type="text"
+            value={formValues.owner}
+            onChange={handleInputChange}
+          /> 
           </FormGroup>
          
           <FormGroup>
@@ -192,7 +189,7 @@ const InputTodo = () => {
                   checked={afternoon}
                 />} 
               label="Afternoon" 
-            />
+              />
             <FormControlLabel 
               control={
                 <Checkbox 
@@ -205,30 +202,28 @@ const InputTodo = () => {
           </FormGroup>
         </Box >
         </DialogContent>
-        <DialogActions>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            onClick={() => setOpen(false)}
-            style={{
-              backgroundColor: "red",
+          <DialogActions>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              onClick={() => setOpen(false)}
+              style={{
+                backgroundColor: "red",
+                margin: "3px"
+              }}
+            >
+              Cancel
+            </Button>
+            <Button variant="contained" color="primary" type="submit" style={{
+              backgroundColor: "green",
               margin: "3px"
-            }}
-          >
-            Cancel
-          </Button>
-          <Button variant="contained" color="primary" type="submit" style={{
-            backgroundColor: "green",
-            margin: "3px"
-            }}
-          >
-            Submit
-          </Button>
-        </DialogActions>
+            }}>
+              Submit
+            </Button>
+          </DialogActions>
         </form>
       </Dialog>
     </>
   );
 };
 export default InputTodo;
-

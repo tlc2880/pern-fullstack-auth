@@ -10,7 +10,8 @@ import {
     TextField,
     Box,
     FormControl,
-    IconButton
+    IconButton,
+    InputAdornment
   } from '@mui/material'
 import { useState } from 'react'
 import itemType from '../../item.Type'
@@ -40,13 +41,14 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
   console.log (newItem);
   return (
     <>
-    <IconButton
-      component="button"
-      onClick={() => setOpen(true)}
-      color="warning"
-    >
-      <EditIcon />
-    </IconButton>
+      <IconButton
+        component="button"
+        onClick={() => setOpen(true)}
+        color="warning"
+      >
+        <EditIcon />
+      </IconButton>
+   
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
@@ -54,7 +56,7 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
         <DialogTitle id='dialog-title'>Edit Shop Item</DialogTitle>
         <DialogContent>
           <Box sx={{
-            "& .MuiTextField-root": { m: 1, width: "40ch" }
+            "& .MuiTextField-root": { m: 1, width: "42ch" }
           }}>
           <FormControl fullWidth>
             <TextField
@@ -74,6 +76,9 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
               margin="normal"
               label="Item price"
               variant="outlined"
+              InputProps={{
+                startAdornment: <InputAdornment position='start'>$</InputAdornment>
+              }}
               value={price}
               onChange={(event) => {
                 setPrice(Number(event.target.value));

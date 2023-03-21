@@ -8,7 +8,8 @@ import {
     DialogActions,
     TextField,
     Box,
-    FormControl
+    FormControl,
+    InputAdornment
   } from '@mui/material'
   import { useState } from 'react'
   import itemType from '../../item.Type'
@@ -76,8 +77,11 @@ const ItemCreate = () => {
                 <TextField
                     id="price"
                     name="price"
-                    label="Enter price ($)"
+                    label="Enter price"
                     type="number"
+                    InputProps={{
+                        startAdornment: <InputAdornment position='start'>$</InputAdornment>
+                    }}
                     value={formValues.price}
                     onChange={handleInputChange}
                 />
