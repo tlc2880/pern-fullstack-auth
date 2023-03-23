@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, SyntheticEvent, ChangeEvent } from "react";
 import { createTodo } from "../../redux/slices/todoSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import {
@@ -53,7 +53,7 @@ const InputTodo = () => {
     });
   };
 
-  const handleCheckboxChange = (event: any) => {
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTime({ ...time, [event.target.name]: event.target.checked as boolean });
     setFormValues({
       ...formValues,
@@ -63,13 +63,13 @@ const InputTodo = () => {
 
   const dispatch = useAppDispatch();
 
-  const onSubmitForm = async (event: React.SyntheticEvent) => {
+  const onSubmitForm = async (event: SyntheticEvent) => {
     event.preventDefault();
     dispatch(createTodo(formValues));
     window.location.reload();
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({
       ...formValues,
@@ -202,26 +202,26 @@ const InputTodo = () => {
           </FormGroup>
         </Box >
         </DialogContent>
-          <DialogActions>
-            <Button 
-              variant="contained" 
-              color="primary" 
-              onClick={() => setOpen(false)}
-              style={{
-                backgroundColor: "red",
-                margin: "3px"
-              }}
-            >
-              Cancel
-            </Button>
-            <Button variant="contained" color="primary" type="submit" style={{
-              backgroundColor: "green",
+        <DialogActions>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={() => setOpen(false)}
+            style={{
+              backgroundColor: "red",
               margin: "3px"
-            }}>
-              Submit
-            </Button>
-          </DialogActions>
-        </form>
+            }}
+          >
+            Cancel
+          </Button>
+          <Button variant="contained" color="primary" type="submit" style={{
+            backgroundColor: "green",
+            margin: "3px"
+          }}>
+            Submit
+          </Button>
+        </DialogActions>
+      </form>
       </Dialog>
     </>
   );

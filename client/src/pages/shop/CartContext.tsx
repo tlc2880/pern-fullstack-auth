@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 import useProducts from "./useProducts";
+import quantityType from '../../quantity.Type'
 
 export const CartContext = createContext({
     items: [],
@@ -14,18 +15,13 @@ type CartProviderProps = {
     children: ReactNode
 }
 
-type quantityType = {
-    id: string;
-    quantity: number;
-}
-
 export function CartProvider({ children }: CartProviderProps) {
     const { getProductData } = useProducts();
     const [cartProducts, setCartProducts] = useState<quantityType[]>([]); 
-    // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]
-    function getProductQuantity(id: string) {
+    
+    function getProductQuantity(id: string): number {
         const quantity = cartProducts.find(product => product.id === id)?.quantity;
-        if (quantity === undefined) {
+        if ((quantity === undefined) || (quantity === null)) {
             return 0;
         }
         return quantity;

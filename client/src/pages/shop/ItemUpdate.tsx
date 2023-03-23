@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { updateItem } from "../../redux/slices/shopSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import EditIcon from "@mui/icons-material/Edit";
@@ -11,9 +12,10 @@ import {
     Box,
     FormControl,
     IconButton,
-    InputAdornment
-  } from '@mui/material'
-import { useState } from 'react'
+    InputAdornment,
+    useMediaQuery,
+  } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
 import itemType from '../../item.Type'
 
 type ItemUpdateProps = {
@@ -21,6 +23,8 @@ type ItemUpdateProps = {
 }
 
 export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [newItem, setNewItem] = useState<itemType>({
       id: item.id,
       title: item.title,
@@ -50,14 +54,14 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
       </IconButton>
    
       <Dialog
+        fullScreen={fullScreen}
         open={open}
         onClose={() => setOpen(false)}
       >
+        <form>
         <DialogTitle id='dialog-title'>Edit Shop Item</DialogTitle>
         <DialogContent>
-          <Box sx={{
-            "& .MuiTextField-root": { m: 1, width: "42ch" }
-          }}>
+        <Box sx={{ width: '100%', minWidth: 320 }}>
           <FormControl fullWidth>
             <TextField
               autoFocus
@@ -125,6 +129,7 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
             Submit
           </Button>
         </DialogActions>
+        </form>
       </Dialog>
     </>
   )

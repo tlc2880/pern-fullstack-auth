@@ -1,3 +1,4 @@
+import { useState, SyntheticEvent, ChangeEvent } from 'react'
 import { createItem } from "../../redux/slices/shopSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import {
@@ -9,32 +10,33 @@ import {
     TextField,
     Box,
     FormControl,
-    InputAdornment
-  } from '@mui/material'
-  import { useState } from 'react'
-  import itemType from '../../item.Type'
+    InputAdornment,
+    useMediaQuery,
+  } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import itemType from '../../item.Type'
 
 const ItemCreate = () => {
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
     const initialValues = {
         id: "",
         title: "",
-        price: null,
+        price: 0,
         id_shop: 0
     }
-
+    const dispatch = useAppDispatch();
     const [ formValues, setFormValues ] = useState<itemType>(initialValues);
     const [open, setOpen] = useState(false)
 
-    const dispatch = useAppDispatch();
-
-    const onSubmitForm = async (event: React.SyntheticEvent) => {
+    const onSubmitForm = async (event: SyntheticEvent) => {
       event.preventDefault();
       dispatch(createItem(formValues));
       window.location.reload();
     };
   
-    const handleInputChange = (e: any) => {
-      const { name, value } = e.target;
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
       setFormValues({
         ...formValues,
         [name]: value,
@@ -55,15 +57,14 @@ const ItemCreate = () => {
             New Item
         </Button>
         <Dialog
+          fullScreen={fullScreen}
           open={open}
           onClose={() => setOpen(false)}
         >
             <form onSubmit={onSubmitForm}>
                 <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
                 <DialogContent>
-                <Box sx={{
-                    "& .MuiTextField-root": { m: 1, width: "40ch" }
-                }}>
+                <Box sx={{ width: '100%', minWidth: 320 }}>
                 <FormControl fullWidth>
                 <TextField
                     id="title"
