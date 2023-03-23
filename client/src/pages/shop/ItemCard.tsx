@@ -7,8 +7,8 @@ import {
     IconButton,
     Typography,
     CardContent,
-    CardActions,
     Card,
+    Stack
 } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
 import useProducts from "./useProducts";
@@ -32,31 +32,32 @@ const ItemCard = ( props: ItemCardProps ) => {
 
     return (
     <>
-        <Card sx={{ minWidth: 300 }}>
+        <Card sx={{ minWidth: 355 }}>
         <CardContent>
-            <Typography align="left" sx={{ fontSize: 18 }} gutterBottom>
-                Title: {product.title}
+            <Typography align="left" sx={{ fontSize: 16 }} >
+                Name: {product.title}
             </Typography>
-            <Typography align="left" sx={{ fontSize: 18 }} gutterBottom>
+            <Typography align="left" sx={{ fontSize: 16 }} >
                 Price: ${product.price}
             </Typography>
-            <Typography align="left" sx={{ fontSize: 18 }} gutterBottom>
+            <Typography align="left" sx={{ fontSize: 16 }} >
                 ID: {product.id}
             </Typography>
-            <Typography align="left" sx={{ fontSize: 18 }} gutterBottom>
+            <Typography align="left" sx={{ fontSize: 16 }} >
                 Id_shop: {product.id_shop}
             </Typography>
+            
+            <Stack direction="row" justifyContent="center" spacing={2}>
+                < ItemUpdate item={product}/>
+                <IconButton
+                    component="button"
+                    onClick={() => handleDelete(product.id_shop)}
+                    color="error"
+                >
+                    <DeleteIcon />
+                </IconButton>
+            </Stack>
         </CardContent>
-        <CardActions>
-            < ItemUpdate item={product}/>
-            <IconButton
-                component="button"
-                onClick={() => handleDelete(product.id_shop)}
-                color="error"
-            >
-                <DeleteIcon />
-            </IconButton>
-        </CardActions>
         </Card>
     </>
     )

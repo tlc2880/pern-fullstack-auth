@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import {Row, Col, Container} from 'react-bootstrap';
+import { Container, Grid } from '@mui/material'
 import useProducts from "../shop/useProducts";
 import ItemCard from '../shop/ItemCard';
 import ItemCreate from '../shop/ItemCreate';
@@ -15,14 +15,14 @@ function ShopAdmin() {
         <CartProvider>
           <Container>
             < ItemCreate />
-            <h1 className="p-3">Administration of Store Items</h1>
-            <Row xs={1} md={3} className="g-4">
-              {productsArray && productsArray.map((item: itemType) => (
-                <Col align="center" key={item.id_shop}>
+            <h3 style={{textAlign: "center"}}>Administration of Store Items</h3>
+            <Grid container spacing={2}>
+              { productsArray.map((item: itemType) => (
+                <Grid item key={item.id} xs={12} md={6} lg={4}>
                   <ItemCard product={item} />
-                </Col>
+                </Grid>
               ))}
-            </Row>
+            </Grid>
           </Container>
         </CartProvider>
       </Layout>

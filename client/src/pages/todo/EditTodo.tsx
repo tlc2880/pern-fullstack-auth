@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { updateTodo } from "../../redux/slices/todoSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import { SelectChangeEvent } from '@mui/material/Select';
@@ -66,7 +66,7 @@ const EditTodo = ( {todo}: EditTodoProps ) => {
     setNewTodo({...newTodo, ['day']: event.target.value});
   };
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTime({ ...time, [event.target.name]: event.target.checked });
     setNewTodo({ ...newTodo, [event.target.name]: event.target.checked });
   };

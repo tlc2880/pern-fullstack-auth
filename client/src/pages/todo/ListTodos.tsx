@@ -1,4 +1,4 @@
-import React, { useEffect  } from "react";
+import { useEffect  } from "react";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { getTodos, updateTodo, deleteTodo } from "../../redux/slices/todoSlice";
 import EditTodo from "./EditTodo";
