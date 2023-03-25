@@ -57,18 +57,18 @@ const ItemCreate = () => {
             New Item
         </Button>
         <Dialog
-          fullScreen={fullScreen}
-          open={open}
-          onClose={() => setOpen(false)}
+            fullScreen={fullScreen}
+            open={open}
+            onClose={() => setOpen(false)}
         >
-            <form onSubmit={onSubmitForm}>
-                <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
-                <DialogContent>
+            <form>
+            <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
+            <DialogContent>
                 <Box sx={{ width: '100%', minWidth: 320 }}>
                 <FormControl fullWidth>
                 <TextField
-                    id="title"
-                    name="title"
+                    autoFocus
+                    margin="normal"
                     label="Enter title"
                     type="text"
                     variant="outlined" 
@@ -76,8 +76,8 @@ const ItemCreate = () => {
                     onChange={handleInputChange}
                 />
                 <TextField
-                    id="price"
-                    name="price"
+                    autoFocus
+                    margin="normal"
                     label="Enter price"
                     type="number"
                     InputProps={{
@@ -87,8 +87,8 @@ const ItemCreate = () => {
                     onChange={handleInputChange}
                 />
                 <TextField
-                    id="id"
-                    name="id"
+                    autoFocus
+                    margin="normal"
                     label="Enter id"
                     type="text"
                     value={formValues.id}
@@ -108,10 +108,15 @@ const ItemCreate = () => {
                     }}>
                     Cancel
                 </Button>
-                <Button variant="contained" color="primary" type="submit" style={{
-                    backgroundColor: "green",
-                    margin: "5px"
-                }}>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    type="submit" 
+                    onClick={() => onSubmitForm}
+                    style={{
+                        backgroundColor: "green",
+                        margin: "5px"
+                    }}>
                     Submit
                 </Button>
             </DialogActions>

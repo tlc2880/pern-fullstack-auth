@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { useAppDispatch } from "../../redux/hooks";
 import { deleteItem } from "../../redux/slices/shopSlice";
-import { CartContext } from './CartContext';
 import { ItemUpdate } from './ItemUpdate';
 import {
     IconButton,
@@ -11,7 +9,6 @@ import {
     Stack
 } from '@mui/material';
 import DeleteIcon from "@mui/icons-material/Delete";
-import useProducts from "./useProducts";
 import itemType from '../../item.Type'
 
 type ItemCardProps = {
@@ -20,11 +17,7 @@ type ItemCardProps = {
 
 const ItemCard = ( props: ItemCardProps ) => {
     const dispatch = useAppDispatch();
-    const { productsArray } = useProducts();
     const product = props.product;
-    const cart = useContext(CartContext);
-    console.log(cart.items);
-    console.log(productsArray)
 
     const handleDelete = (id: number) => {
         dispatch(deleteItem(id));

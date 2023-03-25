@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { updateItem } from "../../redux/slices/shopSlice";
 import { useAppDispatch,  } from "../../redux/hooks";
 import EditIcon from "@mui/icons-material/Edit";
@@ -38,7 +38,7 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
 
   const dispatch = useAppDispatch();
 
-  const handleEdit = (item: itemType) => {
+  const handleSubmit = (item: itemType) => {
     dispatch(updateItem(newItem));
     window.location.reload();
   };
@@ -120,7 +120,7 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
             variant="contained" 
             color="primary" 
             type="submit"
-            onClick={() => handleEdit(item)}
+            onClick={() => handleSubmit(item)}
             style={{
               backgroundColor: "green",
               margin: "5px"

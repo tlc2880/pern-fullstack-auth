@@ -1,32 +1,32 @@
 import Layout from '../../components/Layout';
-import {Row, Col, Container} from 'react-bootstrap';
+import { Container, Grid } from '@mui/material'
 import useProducts from "../shop/useProducts";
 import ProductCard from '../shop/ProductCard';
-import NavbarComponent from '../shop/EComNav';
+import CheckoutDialog from '../shop/CheckoutDialog';
 import CartProvider from '../shop/CartContext';
+import itemType from '../../item.Type'
 
 function Shop() {
-    const { productsArray } = useProducts();
+  const { productsArray } = useProducts();
 
-    return (
-        <>
-         <Layout>
-            <CartProvider>
-                <Container>
-                    <NavbarComponent></NavbarComponent>
-                    <h1 className="p-3">Welcome to the Store!</h1>
-                    <Row xs={1} md={3} className="g-4">
-                        {productsArray && productsArray.map((item: any) => (
-                            <Col align="center" key={item.id_shop}>
-                                <ProductCard product={item} />
-                            </Col>
-                        ))}
-                    </Row>
-                </Container>
-            </CartProvider>
-         </Layout>
-        </>
-    )
+  return (
+    <>
+      <Layout>
+        <CartProvider>
+          <Container>
+            <CheckoutDialog></CheckoutDialog>
+            <h3 style={{textAlign: "center"}}>Welcome to the Store!</h3>
+            <Grid container spacing={2}>
+              { productsArray.map((item: itemType) => (
+                <Grid item key={item.id} xs={12} md={6} lg={4}>
+                  <ProductCard product={item} />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </CartProvider>
+      </Layout>
+    </>
+  )
 }
-
 export default Shop;
