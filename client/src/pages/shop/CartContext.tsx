@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useCallback } from "react";
 import useProducts from "./useProducts";
 import quantityType from '../../quantity.Type'
 
@@ -19,15 +19,15 @@ export function CartProvider({ children }: CartProviderProps) {
     const { getProductData } = useProducts();
     const [cartProducts, setCartProducts] = useState<quantityType[]>([]); 
     
-    function getProductQuantity(id: string): number {
+    const getProductQuantity = useCallback((id: string) => {
         const quantity = cartProducts.find(product => product.id === id)?.quantity;
         if ((quantity === undefined) || (quantity === null)) {
             return 0;
         }
         return quantity;
-    }
-    
-    function addOneToCart(id: string) {
+    }, [ cartProducts ]);
+
+    const addOneToCart = useCallback((id: string) => {
         const quantity = getProductQuantity(id);
         if (quantity === 0) { // product is not in cart
             setCartProducts(
@@ -48,9 +48,9 @@ export function CartProvider({ children }: CartProviderProps) {
                 )
             )
         }
-    }
+    }, [cartProducts, getProductQuantity]);
 
-    function removeOneFromCart(id: string) {
+    const removeOneFromCart = useCallback((id: string) => {
         const quantity = getProductQuantity(id);
         if(quantity === 1) {
             deleteFromCart(id);
@@ -64,7 +64,7 @@ export function CartProvider({ children }: CartProviderProps) {
                 )
             )
         }
-    }
+    }, [setCartProducts, getProductQuantity, cartProducts]);
 
     function deleteFromCart(id: string) {
         setCartProducts(

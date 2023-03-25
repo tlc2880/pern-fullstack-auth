@@ -69,8 +69,8 @@ const InputTodo = () => {
     window.location.reload();
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     setFormValues({
       ...formValues,
       [name]: value,
@@ -153,21 +153,21 @@ const InputTodo = () => {
 
           <FormGroup>
             <InputLabel id="demo-simple-select-label">Day</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={day}
-                label="Day"
-                onChange={handleChange}
-              >
-                <MenuItem key={"Monday"} value={"Monday"}>Monday</MenuItem>
-                <MenuItem key={"Tuesday"} value={"Tuesday"}>Tuesday</MenuItem>
-                <MenuItem key={"Wednesday"} value={"Wednesday"}>Wednesday</MenuItem>
-                <MenuItem key={"Thursday"} value={"Thursday"}>Thursday</MenuItem>
-                <MenuItem key={"Friday"} value={"Friday"}>Friday</MenuItem>
-                <MenuItem key={"Saturday"} value={"Saturday"}>Saturday</MenuItem>
-                <MenuItem key={"Sunday"} value={"Sunday"}>Sunday</MenuItem>
-              </Select>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={day}
+              label="Day"
+              onChange={handleChange}
+            >
+              <MenuItem key={"Monday"} value={"Monday"}>Monday</MenuItem>
+              <MenuItem key={"Tuesday"} value={"Tuesday"}>Tuesday</MenuItem>
+              <MenuItem key={"Wednesday"} value={"Wednesday"}>Wednesday</MenuItem>
+              <MenuItem key={"Thursday"} value={"Thursday"}>Thursday</MenuItem>
+              <MenuItem key={"Friday"} value={"Friday"}>Friday</MenuItem>
+              <MenuItem key={"Saturday"} value={"Saturday"}>Saturday</MenuItem>
+              <MenuItem key={"Sunday"} value={"Sunday"}>Sunday</MenuItem>
+            </Select>
           </FormGroup>
             
           <FormGroup>
@@ -214,14 +214,19 @@ const InputTodo = () => {
           >
             Cancel
           </Button>
-          <Button variant="contained" color="primary" type="submit" style={{
-            backgroundColor: "green",
-            margin: "3px"
-          }}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            type="submit" 
+            style={{
+              backgroundColor: "green",
+              margin: "3px"
+            }}
+          >
             Submit
           </Button>
-        </DialogActions>
-      </form>
+          </DialogActions>
+        </form>
       </Dialog>
     </>
   );

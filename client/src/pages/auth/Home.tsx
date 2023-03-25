@@ -1,9 +1,9 @@
-import Shop from './Shop';
+import MemoizedShop from './Shop';
 
 function Home() {
   return (
     <>
-      < Shop />
+      < MemoizedShop />
     </>
   )
 }
