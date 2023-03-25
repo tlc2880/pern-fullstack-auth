@@ -26,7 +26,7 @@ export function CartProvider({ children }: CartProviderProps) {
         }
         return quantity;
     }
-
+    
     function addOneToCart(id: string) {
         const quantity = getProductQuantity(id);
         if (quantity === 0) { // product is not in cart
@@ -39,7 +39,6 @@ export function CartProvider({ children }: CartProviderProps) {
                 ]
             )
         } else { // product is in cart
-            // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]    add to product id of 2
             setCartProducts(
                 cartProducts.map(
                     product =>
@@ -68,9 +67,6 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     function deleteFromCart(id: string) {
-        // [] if an object meets a condition, add the object to array
-        // [product1, product2, product3]
-        // [product1, product3]
         setCartProducts(
             cartProducts =>
             cartProducts.filter(currentProduct => {
@@ -90,7 +86,7 @@ export function CartProvider({ children }: CartProviderProps) {
                 totalCost = 0;
             }
         })
-        return totalCost;
+        return totalCost.toFixed(2);
     }
 
     const contextValue = {
@@ -111,5 +107,3 @@ export function CartProvider({ children }: CartProviderProps) {
 }
 
 export default CartProvider;
-// Context (cart, addToCart, removeCart)
-// Provider -> gives your React app access to all the things in your context
