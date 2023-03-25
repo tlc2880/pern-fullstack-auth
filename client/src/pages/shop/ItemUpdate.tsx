@@ -24,7 +24,7 @@ type ItemUpdateProps = {
 
 export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
   const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [newItem, setNewItem] = useState<itemType>({
       id: item.id,
       title: item.title,
@@ -38,11 +38,11 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
 
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (item: itemType) => {
+  const handleEdit = (item: itemType) => {
     dispatch(updateItem(newItem));
     window.location.reload();
   };
-  console.log (newItem);
+
   return (
     <>
       <IconButton
@@ -52,7 +52,6 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
       >
         <EditIcon />
       </IconButton>
-   
       <Dialog
         fullScreen={fullScreen}
         open={open}
@@ -120,7 +119,7 @@ export const ItemUpdate = ( {item}: ItemUpdateProps ) => {
             variant="contained" 
             color="primary" 
             type="submit"
-            onClick={() => handleSubmit(item)}
+            onClick={() => handleEdit(item)}
             style={{
               backgroundColor: "green",
               margin: "5px"

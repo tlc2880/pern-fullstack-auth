@@ -18,7 +18,7 @@ import itemType from '../../item.Type'
 
 const ItemCreate = () => {
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
     const initialValues = {
         id: "",
         title: "",
@@ -61,9 +61,9 @@ const ItemCreate = () => {
             open={open}
             onClose={() => setOpen(false)}
         >
-            <form>
-            <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
-            <DialogContent>
+            <form onSubmit={onSubmitForm}>
+                <DialogTitle id='dialog-title'>Create New Shop Item</DialogTitle>
+                <DialogContent>
                 <Box sx={{ width: '100%', minWidth: 320 }}>
                 <FormControl fullWidth>
                 <TextField
@@ -112,7 +112,6 @@ const ItemCreate = () => {
                     variant="contained" 
                     color="primary" 
                     type="submit" 
-                    onClick={() => onSubmitForm}
                     style={{
                         backgroundColor: "green",
                         margin: "5px"

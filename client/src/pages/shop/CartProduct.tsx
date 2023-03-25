@@ -28,7 +28,6 @@ function CartProduct(props: quantityType) {
                     }}
                 >Remove
                 </Button>
-
             </Stack>
             <hr></hr>
         </>
